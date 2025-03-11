@@ -1,0 +1,12 @@
+{
+    "name": "My License Policy",
+    "description": "This policy restricts the use of certain licenses.",
+    "spdx_identifiers": ["GPL-3.0"],
+    "licenses": [
+      {
+        "action": "block",
+        "reason": "GPL-3.0 is not allowed due to company policy."
+      }
+    ]
+  }
+  
