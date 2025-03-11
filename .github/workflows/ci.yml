@@ -2,6 +2,10 @@ name: Node.js CI
 
 on: [push, pull_request]
 
+permissions:  
+  id-token: write  # This is required for requesting the JWT  
+  contents: read   # This is required for actions/checkout  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,14 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-Permissions:  
-    id-token: write # This is required for requesting the JWT  
-    contents: read  # This is required for actions/checkout
-  
-jobs:
-  example-job:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Request OIDC Token
         run: |
           echo "Token URL: $ACTIONS_ID_TOKEN_REQUEST_URL"
