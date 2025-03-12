@@ -29,20 +29,11 @@ jobs:
 
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
-  push:
-    runs-on: ubuntu-latest
-    name: NPM Push Demo
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Push
-        id: push
-        uses: cloudsmith-io/action@v4
+      - name: Cloudsmith Push Debian Package
+        uses: cloudsmith-io/action@v0.5.3
         with:
-          api-key: ${{ env.CLOUDSMITH_API_KEY }}
-          command: "push"
-          format: "npm"
-          owner: "cloudsmith"
-          repo: "actions"
-          republish: "true" # needed ONLY if version is not changing
-          file: "/Users/sparwani/npm/npm-1.0.0.tgz" # real file that will repeat versions
+          command: 'push'
+          format: 'npm'
+          owner: 'simran-parwani-OO6R'             # Your Cloudsmith account name or org name (namespace)
+          repo: 'npm'         # Your Cloudsmith Repository name (slug)
+          file: '/Users/sparwani/npm/npm-1.0.0.tgz'  
