@@ -37,15 +37,15 @@ jobs:
 
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
-      - name: Cloudsmith Push npm Package
-        uses: cloudsmith-io/action@v0.5.3
-        with:
-          command: 'push'
-          format: 'npm'
-          owner: 'simran-parwani-OO6R'             # Your Cloudsmith account name or org name (namespace)
-          repo: 'npm'         # Your Cloudsmith Repository name (slug)
-          republish: 'true'          # needed if version is not changing
-          file: 'npm-1.0.0.tgz'  # debian package filename
+      #- name: Cloudsmith Push npm Package
+       # uses: cloudsmith-io/action@v0.5.3
+        #with:
+          #command: 'push'
+          #format: 'npm'
+          #owner: 'simran-parwani-OO6R'             # Your Cloudsmith account name or org name (namespace)
+          #repo: 'npm'         # Your Cloudsmith Repository name (slug)
+          #republish: 'true'          # needed if version is not changing
+          #file: 'npm-1.0.0.tgz'  # debian package filename
 
       - name: Cloudsmith Push npm Package
         uses: cloudsmith-io/action@v0.5.3
