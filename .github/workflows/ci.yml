@@ -16,12 +16,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"  # Apne project ke hisaab se version badal sakta hai
+          node-version: "18" 
 
       - name: Install dependencies
         run: npm install
 
       - name: Request OIDC Token
         run: |
-          echo "Token URL: $ACTIONS_ID_TOKEN_REQUEST_URL"
-          echo "Token: $ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+          value=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq '.value')
+          token=$(curl -X POST -H "Content-Type: application/json" -d "{\"oidc_token\":$value, \"service_slug\":\"access-Q5D3\"}" https://api.cloudsmith.io/openid/simran-parwani-OO6R/ | jq -r '.token')
+          curl --request GET --url https://api.cloudsmith.io/v1/user/self/ --header "X-Api-Key:Bearer $token" --header 'accept: application/json'
+
+          echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
