@@ -43,7 +43,7 @@ jobs:
             owner: 'simran-parwani-OO6R'             # Your Cloudsmith account name or org name (namespace)
             repo: 'npm'         # Your Cloudsmith Repository name (slug)
             republish: 'true'          # needed if version is not changing
-            file: 'npm-1.0.0.tgz'  # debian package filename
+            file: './npm-1.0.0.tgz'  # debian package filename
 
       - name: Install dependencies
         run: npm install
