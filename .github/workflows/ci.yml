@@ -31,6 +31,10 @@ jobs:
   
             echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
+      - name: Build npm package
+        run: npm pack
+
+
       - name: Cloudsmith Push npm Package
         uses: cloudsmith-io/action@v0.5.3
         with:
@@ -44,9 +48,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build npm package
-        run: npm pack
-
+      
       
 
       
